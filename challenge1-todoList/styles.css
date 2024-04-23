@@ -1,0 +1,42 @@
+body {
+    background-image: url(img/imagen-montaña.jpeg); /* Agrego una imagen como fondo de pantalla. */
+    background-size: cover; /* Ajusto la imagen para que cubra toda la pantalla. */
+}
+
+#botones {
+    display: flex; /* Agrupo todos los elementos de forma vertical */
+    justify-content: space-around; /* Separa todos los elementos con la misma cantidad de espacios.
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px; */
+}
+
+#botones button{
+    font-family: Arial, Helvetica, sans-serif; /* Tipo de letra. */
+    font-weight: bold; /* Letra en negrita. */
+    width: 150px; /* Ancho del boton */
+    height: 40px; /* Alto del boton */
+    transform: scale(1.8); /* Cambia el tamaño de los botones y el contenido de adentro */
+    margin-top: 40px; /* Mueve hacia abajo la posición del elemento */
+}
+
+#botonAgregar, #botonMarcar {
+    background-color: rgb(197, 209, 228);
+
+}
+
+#botonEliminar{
+    background-color: rgb(236, 127, 127);
+}
+
+#listaTareas {
+    color: white; /* Color del texto. */
+    font-size: 30px; /* Modifica el tamaño del texto. */
+    margin-top: 60px;
+    margin-left: 40px;
+}
+
+#listaTareas li {
+    margin-top: 20px;
+}
+

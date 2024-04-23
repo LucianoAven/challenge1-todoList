@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Lista tareas</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+    <div id="botones">
+        <button id="botonAgregar" onclick="agregarTarea()">Agregar Tarea</button>
+        <button id="botonMarcar" onclick="marcarTarea()">Marcar Tarea</button>
+        <button id="botonEliminar" onclick="eliminarTarea()">Eliminar Tarea</button>
+    </div>
+
+    <ul id="listaTareas"></ul>
+
+    <script>
+        let listaTareas = [];
+
+        const agregarTarea = () => {
+            const agregar = prompt("Ingrese la tarea que desea agregar a la lista:");
+            listaTareas.push([listaTareas.length + 1, agregar, "Asignada"]);
+            mostrarTareas()
+        };
+
+        const marcarTarea = () => {
+            const marcar = prompt("Ingrese el número de la tarea completada:");
+            // Buscar elemento con mismo número.
+            const buscar = listaTareas.findIndex(tarea => tarea[0] == marcar);
+            if (buscar !== -1) {
+                // Reemplazo elemento.
+                listaTareas[buscar][2] = "Completada";
+                mostrarTareas()
+            }
+        };
+
+        const eliminarTarea = () => {
+            const eliminar = prompt("Ingrese el número de la tarea que quieres eliminar:");
+            const buscar = listaTareas.findIndex(tarea => tarea[0] == eliminar); 
+            // Asegurar que el número de la tarea se encuentre en la lista.
+            if (buscar !== -1) {
+                // Elimino la tarea.
+                listaTareas.splice(buscar, 1);
+                mostrarTareas()
+            }
+        };
+
+        // Mostrar las tareas en una lista
+        const mostrarTareas = () => {
+            const listaElement = document.getElementById("listaTareas");
+            listaElement.innerHTML = "" // Elimino la lista de la página para volver a crear.
+            let contador = 0;
+            // Recorro la lista.
+            listaTareas.forEach(tarea => {
+                tarea[0] = 1 + contador;
+                contador += 1;
+                // Convierto cada tarea de la lista en un elemento html tipo <li>
+                const item = document.createElement("li");
+                // Modifico cada elemento de la lista haciéndolo más cómodo de ver para el usuario.
+                item.textContent = `${tarea[0]}- ${tarea[1]}: ${tarea[2]}`;
+                // Va agregando cada elemento HTML en la pagina principal de forma vertical.
+                listaElement.appendChild(item);
+            });
+        };
+
+    </script>
+</body>
+</html>
